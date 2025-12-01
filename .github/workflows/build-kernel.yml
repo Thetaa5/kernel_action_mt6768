@@ -242,6 +242,8 @@ jobs:
         fi
         if [ ${{ env.DISABLE_CC_WERROR }} = true ]; then
             echo "CONFIG_CC_WERROR=n" >> arch/${{ env.KERNEL_ARCH }}/configs/${DEVICE}_defconfig
+            echo "CONFIG_RELR=y" >> arch/${{ env.KERNEL_ARCH }}/configs/${DEVICE}_defconfig
+            echo "CONFIG_TOOLS_SUPPORT_RELR=y" >> arch/${{ env.KERNEL_ARCH }}/configs/${DEVICE}_defconfig
         fi
         if [ ${{ env.OLD_ANDROID_SUPPORT }} = true ]; then
             git apply $GITHUB_WORKSPACE/patches/OLD_ANDROID_SUPPORT.patch
